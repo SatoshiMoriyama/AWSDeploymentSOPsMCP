@@ -3,7 +3,7 @@
 
 repository:
   # Repository settings
-  name: techblog_workspace
+  name: AWSDeploymentSOPsMCP
   description: "技術ブログ記事の執筆・校正とコード検証のためのワークスペース"
   homepage: ""
   topics: ["blog", "markdown", "cdk", "aws", "typescript"]
