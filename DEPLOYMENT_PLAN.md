@@ -5,7 +5,7 @@ app_name: NextJSApp
 app_type: Frontend Application (Next.js)
 branch: deploy-to-aws
 created: 2026-02-10T15:30:00+09:00
-last_updated: 2026-02-10T15:30:00+09:00
+last_updated: 2026-02-10T15:45:00+09:00
 ---
 
 # Deployment Plan: NextJSApp
@@ -15,12 +15,20 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 **IMPORTANT**: Update this plan after EACH step completes. Mark the step `[x]` and update `last_updated` timestamp.
 
 ## Phase 1: Gather Context and Configure
-- [ ] Step 0: Inform User of Execution Flow
-- [ ] Step 1: Create Deployment Plan
-- [ ] Step 2: Create Deploy Branch
-- [ ] Step 3: Detect Build Configuration
-- [ ] Step 4: Validate Prerequisites
+- [x] Step 0: Inform User of Execution Flow
+- [x] Step 1: Create Deployment Plan
+- [x] Step 2: Create Deploy Branch
+- [x] Step 3: Detect Build Configuration
+- [x] Step 4: Validate Prerequisites
 - [ ] Step 5: Revisit Deployment Plan
+
+### Build Configuration Detected
+- Package Manager: pnpm v10.20.0
+- Framework: Next.js 16.1.6 (App Router)
+- Build Command: `pnpm --filter nextjsapp run build`
+- Output Directory: `packages/nextjsapp/out/`
+- Base Path: `/` (root)
+- CloudFront Config: SPA (error responses to /index.html)
 
 ## Phase 2: Build CDK Infrastructure
 - [ ] Step 6: Initialize CDK Foundation
