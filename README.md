@@ -78,3 +78,14 @@ pnpm cdk:destroy
   - ルート `package.json` の name と description
   - CDK プロジェクトの `packages/cdk/package.json` の name
   - Kiro Hook の workspaceFolderName
+
+
+## デプロイ
+
+デプロイ先: https://d1thetn4gk5512.cloudfront.net
+
+[AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html)の[deploy-frontend-app]エージェント標準操作手順を使用してデプロイされています。
+
+デプロイコマンド: `./scripts/deploy.sh`
+
+詳細は[DEPLOYMENT.md](./DEPLOYMENT.md)を参照してください。
