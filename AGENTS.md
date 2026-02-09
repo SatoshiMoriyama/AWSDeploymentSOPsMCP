@@ -1,5 +1,5 @@
-# Agent Documentation
+# エージェントドキュメント
 
-## Deployment
+## デプロイ
 
-See `./DEPLOYMENT.md` for deployment status, logs, troubleshooting, pipeline setup, and next steps.
+デプロイステータス、ログ、トラブルシューティング、パイプライン設定、次のステップについては `./DEPLOYMENT.md` を参照してください。

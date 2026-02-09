@@ -80,10 +80,12 @@ pnpm cdk:destroy
   - Kiro Hook の workspaceFolderName
 
 
-## Deployment
+## デプロイ
 
-Deployed at: https://d1thetn4gk5512.cloudfront.net, using the [deploy-frontend-app] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
+デプロイ先: https://d1thetn4gk5512.cloudfront.net
 
-Deployment command: `./scripts/deploy.sh`
+[AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html)の[deploy-frontend-app]エージェント標準操作手順を使用してデプロイされています。
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for full details.
+デプロイコマンド: `./scripts/deploy.sh`
+
+詳細は[DEPLOYMENT.md](./DEPLOYMENT.md)を参照してください。

@@ -1,41 +1,41 @@
-# Deployment Summary
+# デプロイサマリー
 
-Your app is deployed to AWS! Preview URL: https://d1thetn4gk5512.cloudfront.net
+アプリが AWS にデプロイされました！　プレビューURL: https://d1thetn4gk5512.cloudfront.net
 
-**Next Step: Automate Deployments**
+**次のステップ: デプロイの自動化**
 
-You're currently using manual deployment. To automate deployments from GitHub, ask your coding agent to set up AWS CodePipeline using an agent SOP for pipeline creation. Try: "create a pipeline using AWS SOPs"
+現在は手動デプロイを使用しています。GitHub からの自動デプロイを設定するには、エージェント SOP を使って AWS CodePipeline をセットアップできます。試してみてください: "AWS SOPs を使ってパイプラインを作成して"
 
-Services used: CloudFront, S3, CloudFormation, IAM
+使用サービス: CloudFront, S3, CloudFormation, IAM
 
-Questions? Ask your Coding Agent:
- - What resources were deployed to AWS?
- - How do I update my deployment?
+質問がある場合は、コーディングエージェントに聞いてください:
+ - AWS にどのようなリソースがデプロイされましたか？
+ - デプロイを更新するにはどうすればいいですか？
 
-## Quick Commands
+## クイックコマンド
 
 ```bash
-# View deployment status
+# デプロイステータスの確認
 aws cloudformation describe-stacks --stack-name "NextJSAppFrontend-preview-mori" --query 'Stacks[0].StackStatus' --output text --profile work
 
-# Invalidate CloudFront cache
+# CloudFrontキャッシュの無効化
 aws cloudfront create-invalidation --distribution-id "E1BL2H0W4UZW0R" --paths "/*" --profile work
 
-# View CloudFront access logs (last hour)
+# CloudFrontアクセスログの確認（直近）
 aws s3 ls "s3://nextjsappfrontend-preview-cftos3cloudfrontloggingb-1xogatnadyxq/" --recursive --profile work | tail -20
 
-# Redeploy
+# 再デプロイ
 ./scripts/deploy.sh
 ```
 
-## Production Readiness
+## 本番環境への準備
 
-For production deployments, consider:
-- WAF Protection: Add AWS WAF with managed rules (Core Rule Set, Known Bad Inputs) and rate limiting
-- CSP Headers: Configure Content Security Policy in CloudFront response headers (`script-src 'self'`, `frame-ancestors 'none'`)
-- Custom Domain: Set up Route 53 and ACM certificate
-- Monitoring: CloudWatch alarms for 4xx/5xx errors and CloudFront metrics
-- Auth Redirect URLs: If using an auth provider (Auth0, Supabase, Firebase, Lovable, etc.), add your CloudFront URL to allowed redirect URLs
+本番環境へのデプロイを検討する際は、以下を考慮してください:
+- WAF 保護: AWS WAF にマネージドルール（Core Rule Set、Known Bad Inputs）とレート制限を追加
+- CSP ヘッダー: CloudFront レスポンスヘッダーで Content Security Policy を設定（`script-src 'self'`、`frame-ancestors 'none'`）
+- カスタムドメイン: Route 53 と ACM 証明書をセットアップ
+- モニタリング: 4xx/5xx エラーと CloudFront メトリクスの CloudWatch アラーム
+- 認証リダイレクト URL: 認証プロバイダー（Auth0、Supabase、Firebase、Lovable など）を使用している場合は、CloudFront URL を許可されたリダイレクト URL に追加
 
 ---
 
@@ -50,66 +50,66 @@ created: 2026-02-10T15:30:00+09:00
 last_updated: 2026-02-10T04:49:00+09:00
 ---
 
-# Deployment Plan: NextJSApp
+# デプロイプラン: NextJSApp
 
-**IMPORTANT**: Update this plan after EACH step completes. Mark the step `[x]` and update `last_updated` timestamp.
+**重要**: 各ステップ完了後にこのプランを更新してください。ステップを `[x]` でマークし、`last_updated` タイムスタンプを更新します。
 
-## Phase 1: Gather Context and Configure
-- [x] Step 0: Inform User of Execution Flow
-- [x] Step 1: Create Deployment Plan
-- [x] Step 2: Create Deploy Branch
-- [x] Step 3: Detect Build Configuration
-- [x] Step 4: Validate Prerequisites
-- [x] Step 5: Revisit Deployment Plan
+## フェーズ1: コンテキスト収集と設定
+- [x] ステップ0: 実行フローの説明
+- [x] ステップ1: デプロイプランの作成
+- [x] ステップ2: デプロイブランチの作成
+- [x] ステップ3: ビルド設定の検出
+- [x] ステップ4: 前提条件の検証
+- [x] ステップ5: デプロイプランの見直し
 
-### Build Configuration Detected
-- Package Manager: pnpm v10.20.0
-- Framework: Next.js 16.1.6 (App Router)
-- Build Command: `pnpm --filter nextjsapp run build`
-- Output Directory: `packages/nextjsapp/out/`
-- Base Path: `/` (root)
-- CloudFront Config: SPA (error responses to /index.html)
+### 検出されたビルド設定
+- パッケージマネージャー: pnpm v10.20.0
+- フレームワーク: Next.js 16.1.6 (App Router)
+- ビルドコマンド: `pnpm --filter nextjsapp run build`
+- 出力ディレクトリ: `packages/nextjsapp/out/`
+- ベースパス: `/` (ルート)
+- CloudFront設定: SPA (エラーレスポンスを /index.html へ)
 
-## Phase 2: Build CDK Infrastructure
-- [x] Step 6: Initialize CDK Foundation
-- [x] Step 7: Generate CDK Stack
-- [x] Step 8: Create Deployment Script
-- [x] Step 9: Validate CDK Synth
+## フェーズ2: CDKインフラストラクチャの構築
+- [x] ステップ6: CDK基盤の初期化
+- [x] ステップ7: CDKスタックの生成
+- [x] ステップ8: デプロイスクリプトの作成
+- [x] ステップ9: CDK Synthの検証
 
-## Phase 3: Deploy and Validate
-- [x] Step 10: Execute CDK Deployment
-- [x] Step 11: Validate CloudFormation Stack
+## フェーズ3: デプロイと検証
+- [x] ステップ10: CDKデプロイの実行
+- [x] ステップ11: CloudFormationスタックの検証
 
-## Phase 4: Update Documentation
-- [x] Step 12: Finalize Deployment Plan
-- [x] Step 13: Update README.md
+## フェーズ4: ドキュメントの更新
+- [x] ステップ12: デプロイプランの最終化
+- [x] ステップ13: README.mdの更新
 
-## Deployment Info
+## デプロイ情報
 
-- Deployment URL: https://d1thetn4gk5512.cloudfront.net
-- Stack name: NextJSAppFrontend-preview-mori
-- Distribution ID: E1BL2H0W4UZW0R
-- S3 Bucket: nextjsappfrontend-preview-m-cftos3s3bucketcae9f2be-nweitdzndqtx
-- CloudFront Log Bucket: nextjsappfrontend-preview-cftos3cloudfrontloggingb-1xogatnadyxq
-- S3 Log Bucket: nextjsappfrontend-preview-cftos3s3loggingbucket64b-gl1kpaxixz2f
+- デプロイURL: https://d1thetn4gk5512.cloudfront.net
+- スタック名: NextJSAppFrontend-preview-mori
+- ディストリビューションID: E1BL2H0W4UZW0R
+- S3バケット: nextjsappfrontend-preview-m-cftos3s3bucketcae9f2be-nweitdzndqtx
+- CloudFrontログバケット: nextjsappfrontend-preview-cftos3cloudfrontloggingb-1xogatnadyxq
+- S3ログバケット: nextjsappfrontend-preview-cftos3s3loggingbucket64b-gl1kpaxixz2f
 
-## Recovery Guide
+## リカバリーガイド
 
 ```bash
-# Rollback
+# ロールバック
 cd packages/cdk && npx cdk destroy "NextJSAppFrontend-preview-mori" --profile work
 
-# Redeploy
+# 再デプロイ
 ./scripts/deploy.sh
 ```
 
-## Issues Encountered
+## 発生した問題
 
-None.
+なし
 
-## Session Log
+## セッションログ
 
-### Session 1 - 2026-02-10T15:30:00+09:00
-Agent: Auto
-Progress: Created deployment plan, configured CDK infrastructure, deployed to AWS
-Next: Documentation complete
+### セッション1 - 2026-02-10T15:30:00+09:00
+エージェント: Auto
+進捗: デプロイプラン作成、CDKインフラ設定、AWSへのデプロイ完了
+次: ドキュメント完成
