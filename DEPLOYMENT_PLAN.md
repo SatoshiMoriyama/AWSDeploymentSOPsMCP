@@ -37,8 +37,12 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 - [ ] Step 9: Validate CDK Synth
 
 ## Phase 3: Deploy and Validate
-- [ ] Step 10: Execute CDK Deployment
-- [ ] Step 11: Validate CloudFormation Stack
+- [x] Step 10: Execute CDK Deployment
+- [x] Step 11: Validate CloudFormation Stack
+
+## Phase 4: Update Documentation
+- [ ] Step 12: Finalize Deployment Plan
+- [ ] Step 13: Update README.md
 
 ## Phase 4: Update Documentation
 - [ ] Step 12: Finalize Deployment Plan
@@ -46,12 +50,12 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 
 ## Deployment Info
 
-- Deployment URL: [after completion]
-- Stack name: [after creation]
-- Distribution ID: [after creation]
-- S3 Bucket: [after creation]
-- CloudFront Log Bucket: [after creation]
-- S3 Log Bucket: [after creation]
+- Deployment URL: https://d1thetn4gk5512.cloudfront.net
+- Stack name: NextJSAppFrontend-preview-mori
+- Distribution ID: E1BL2H0W4UZW0R
+- S3 Bucket: nextjsappfrontend-preview-m-cftos3s3bucketcae9f2be-nweitdzndqtx
+- CloudFront Log Bucket: nextjsappfrontend-preview-cftos3cloudfrontloggingb-1xogatnadyxq
+- S3 Log Bucket: nextjsappfrontend-preview-cftos3s3loggingbucket64b-gl1kpaxixz2f
 
 ## Recovery Guide
 

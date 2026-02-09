@@ -38,21 +38,28 @@ fi
 
 "${DEPLOY_CMD[@]}"
 
+echo ""
+echo "Retrieving deployment information..."
+
 FRONTEND_URL=$(aws cloudformation describe-stacks \
     --stack-name "NextJSAppFrontend-${ENVIRONMENT}" \
     --query 'Stacks[0].Outputs[?OutputKey==`WebsiteURL`].OutputValue' \
     --output text \
-    --profile work)
+    --profile work 2>/dev/null || echo "Not available yet")
 
 DISTRIBUTION_ID=$(aws cloudformation describe-stacks \
     --stack-name "NextJSAppFrontend-${ENVIRONMENT}" \
     --query 'Stacks[0].Outputs[?OutputKey==`DistributionId`].OutputValue' \
     --output text \
-    --profile work)
+    --profile work 2>/dev/null || echo "Not available yet")
 
 echo ""
 echo "Deployment complete for environment: $ENVIRONMENT!"
-echo "Frontend URL: $FRONTEND_URL"
+if [ "$FRONTEND_URL" != "Not available yet" ]; then
+    echo "Frontend URL: $FRONTEND_URL"
+else
+    echo "Frontend URL: Check CloudFormation console for outputs"
+fi
 echo ""
 echo "Usage examples:"
 echo "  ./scripts/deploy.sh                   # Deploy to preview-\$(whoami)"
